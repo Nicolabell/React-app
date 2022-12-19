@@ -5,7 +5,8 @@ I'm running through this course to learn a bit of React / db interaction
 What I learned / references:
 
 Tailwind colors palette: https://tailwindcss.com/docs/customizing-colors
-
+Prettier extension to keep everything tidy
+Some google fonts have loads of extra padding on the bottom which throws out padding etc!
 
 ------
 Accessibility tweaks TO DO:
