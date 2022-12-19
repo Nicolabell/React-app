@@ -2,6 +2,11 @@
 Project as learned from the tutorials at https://www.udemy.com/course/full-stack-crash-course 
 I'm running through this course to learn a bit of React / db interaction
 
+What I learned / references:
+
+Tailwind colors palette: https://tailwindcss.com/docs/customizing-colors
+
+
 ------
 Accessibility tweaks TO DO:
 

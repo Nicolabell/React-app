@@ -1,20 +1,36 @@
+body {
+  background-color: #292524;
+}
+
+.fact-form {
+  color: #78716c;
+}
+
 h1 {
   font-size: 42px;
   text-transform: uppercase;
   text-align: center;
+  color: #fafaf9;
+  font-family: "Coiny", sans-serif;
 }
 
-p {
+.fact {
   font-size: 20px;
   line-height: 1.4;
-  font-family: sans-serif;
+  font-family: "Sono", sans-serif;
+  color: #fafaf9;
 }
 
-span {
+.tag {
   text-transform: uppercase;
   font-size: 14px;
+  font-family: "Coiny", sans-serif;
 }
 
 ul {
   list-style: none;
+}
+
+li {
+  background-color: #78716c;
 }
