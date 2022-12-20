@@ -44,8 +44,10 @@ body {
 .fact-form {
   background-color: #78716c;
   margin-bottom: 40px;
-  text-align: center;
   padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
 h1 {
@@ -58,7 +60,9 @@ h1 {
 
 .category {
   margin-bottom: 16px;
+  
 }
+
 .fact {
   font-size: 20px;
   line-height: 1.4;
@@ -81,6 +85,24 @@ h1 {
 
 .vote-buttons {
   margin-left: auto;
+  flex-shrink 0;
+  display: flex;
+  gap: 8px;
+}
+
+.vote-buttons:hover {
+  background-color: #292524;
+}
+
+.vote-buttons button {
+  border: none;
+  background-color: #a8a29e;
+  border-radius: 100%;
+  padding: 6px 12px;
+  color: inherit;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
 }
 
 ul {
@@ -109,6 +131,8 @@ ul {
   padding: 16px 0 13px;
   background-image: linear-gradient(135deg, #3b82f6, #ef4444, #16a34a, #eab308);
   color: inherit;
+  border-radius: 100px;
+  cursor: pointer;
   transition: 0.2s;
 }
 
@@ -123,10 +147,37 @@ ul {
 
 .btn-all-categories {
   margin-bottom: 16px;
-  width: 100%;
+  width: 80%;
 }
 
 .btn-category {
-  width: 100%;
+  width: 80%;
   background-image: none;
+}
+
+.fact-form input, 
+.fact-form select {
+  max-width: 220px;
+  background-color: #58493e;
+  border: none;
+  border-radius: 100px;
+  padding: 16px;
+  font-size: 18px;
+  color: inherit;
+  font-family: inherit;
+}
+
+.fact-form input::placeholder {
+  color: #a8a29e;
+}
+
+.fact-form input:first-child {
+  flex-grow: 1;  // not working work out why
+}
+
+
+.fact-form span {
+  font-weight: 600;
+  font-size: 10px;
+  margin-right: 18px;
 }
