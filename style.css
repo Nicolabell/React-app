@@ -44,6 +44,10 @@ h1 {
   color: #fafaf9;
   margin-bottom: 16px;
   padding: 16px 30px;
+  letter-spacing: -1px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
 }
 
 .tag {
@@ -51,6 +55,10 @@ h1 {
   font-size: 14px;
   font-family: "Coiny", sans-serif;
   padding: 5px 10px;
+}
+
+.vote-buttons {
+  margin-left: auto;
 }
 
 ul {
