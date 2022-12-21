@@ -8,8 +8,9 @@ Tailwind colors palette: https://tailwindcss.com/docs/customizing-colors
 Prettier extension to keep everything tidy
 Some google fonts have loads of extra padding on the bottom which throws out padding etc!
 
-useful for aligning one thing to the left in flexbox -  margin-left: auto;
-correct way to arrange sudo classes for links
+Useful for aligning one thing to the left in flexbox -  margin-left: auto;
+Correct way to arrange sudo classes for links
+Supabase for simple backend set up
 
 ------
 Accessibility tweaks TO DO:
