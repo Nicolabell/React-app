@@ -7,10 +7,10 @@ What I learned / references:
 Tailwind colors palette: https://tailwindcss.com/docs/customizing-colors
 Prettier extension to keep everything tidy
 Some google fonts have loads of extra padding on the bottom which throws out padding etc!
-
 Useful for aligning one thing to the left in flexbox -  margin-left: auto;
 Correct way to arrange sudo classes for links
 Supabase for simple backend set up
+Use API keys, async function, await fetch to load data 
 
 ------
 Accessibility tweaks TO DO:
