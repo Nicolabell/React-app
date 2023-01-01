@@ -89,6 +89,7 @@ function FactList() {
           <Fact key={fact.id} fact={fact} />
         ))}
       </ul>
+      <p>There are {facts.length} in the database. Add your own!</p>
     </section>
   );
 }
