@@ -1,4 +1,5 @@
 import { isValidInputTimeValue } from "@testing-library/user-event/dist/utils";
+import { useState } from "react";
 import "./style.css";
 
 const CATEGORIES = [
@@ -47,6 +48,8 @@ const initialFacts = [
 ];
 
 function App() {
+  const [showForm, setShowForm] = useState(false);
+
   const appTitle = "Today i learned";
 
   return (
@@ -57,9 +60,15 @@ function App() {
           <img src="logo.png" alt="Today I Learned Logo" />
           <h1>{appTitle}</h1>
         </div>
-        <button className="btn btn-large btn-open">Share a fact</button>
+        <button
+          className="btn btn-large btn-open"
+          onClick={() => setShowForm((show) => !show)}
+        >
+          Share a fact
+        </button>
       </header>
-      <NewFactForm />
+
+      {showForm ? <NewFactForm /> : null}
 
       <main className="main">
         <CategoryFilter />
