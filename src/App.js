@@ -110,6 +110,17 @@ function NewFactForm() {
       console.log("there is data");
 
     // 3. Create a new fact object
+const newfact = {
+  id: Math.round(Math.random() * 10000),
+  text,
+  source,
+  category,
+  votesInteresting: 8,
+  votesMindblowing: 3,
+  votesFalse: 1,
+  createdIn: 2015,
+},
+
 
     // 4. Add new fact to user interface
 
