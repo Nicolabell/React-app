@@ -83,6 +83,16 @@ function Header({ showForm, setShowForm }) {
   );
 }
 
+function isValidUrl(string) {
+  let url;
+  try {
+    url = new URL(string);
+  } catch (_) {
+    return false;
+  }
+  return url.protocol === "http:" || url.protocol === "https:";
+}
+
 function NewFactForm() {
   const [text, setText] = useState("");
   const [source, setSource] = useState("");
@@ -90,8 +100,22 @@ function NewFactForm() {
   const textLength = text.length;
 
   function handleSubmit(e) {
+    // 1. Prevent browser reload
     e.preventDefault();
     console.log(text);
+
+    // 2. Check if data is valid. if so, create a new fact using truthy
+
+    if (text && isValidUrl(source) && category && text.length <= 200)
+      console.log("there is data");
+
+    // 3. Create a new fact object
+
+    // 4. Add new fact to user interface
+
+    // 5. Reset the input form once fact submitted
+
+    // 6. Close the form
   }
 
   return (
