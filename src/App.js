@@ -127,7 +127,7 @@ function NewFactForm({ setFacts, setShowForm }) {
       //setFacts((facts) => [newfact, ...facts]);   <--- needs to be this eventually but get below working first
       setFacts((facts) => [newFact, ...facts]);
 
-      // 5. Reset the input form once fact submitted
+      // 5. Reset the input form once fact submitted - not really necessary cos we're closing it below anyway.
       setText("");
       setSource("");
       setCategory("");
