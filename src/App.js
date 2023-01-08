@@ -54,8 +54,9 @@ function App() {
   return (
     <>
       <Header showForm={showForm} setShowForm={setShowForm} />
-
-      {showForm ? <NewFactForm /> : null}
+      {showForm ? (
+        <NewFactForm setFacts={setFacts} setShowForm={setShowForm} />
+      ) : null}
 
       <main className="main">
         <CategoryFilter />
@@ -94,9 +95,9 @@ function isValidUrl(string) {
   return url.protocol === "http:" || url.protocol === "https:";
 }
 
-function NewFactForm() {
-  const [text, setText] = useState("");
-  const [source, setSource] = useState("");
+function NewFactForm({ setFacts, setShowForm }) {
+  const [text, setText] = useState("test text");
+  const [source, setSource] = useState("http://example.com");
   const [category, setCategory] = useState("");
   const textLength = text.length;
 
@@ -109,24 +110,32 @@ function NewFactForm() {
 
     if (text && isValidUrl(source) && category && text.length <= 200)
       console.log("there is data");
+    {
+      // 3. Create a new fact object
+      const newFact = {
+        id: Math.round(Math.random() * 10000),
+        text,
+        source,
+        category,
+        votesInteresting: 8,
+        votesMindblowing: 3,
+        votesFalse: 1,
+        createdIn: new Date().getFullYear(),
+      };
 
-    // 3. Create a new fact object
-    const newfact = {
-      id: Math.round(Math.random() * 10000),
-      text,
-      source,
-      category,
-      votesInteresting: 8,
-      votesMindblowing: 3,
-      votesFalse: 1,
-      createdIn: 2015,
-    };
+      // 4. Add new fact to user interface
+      //setFacts((facts) => [newfact, ...facts]);   <--- needs to be this eventually but get below working first
+      setFacts((facts) => [newFact, ...facts]);
 
-    // 4. Add new fact to user interface
+      // 5. Reset the input form once fact submitted
+      setText("");
+      setSource("");
+      setCategory("");
 
-    // 5. Reset the input form once fact submitted
+      // 6. Close the form
 
-    // 6. Close the form
+      setShowForm(false);
+    }
   }
 
   return (
