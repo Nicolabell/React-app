@@ -1,6 +1,6 @@
 import { isValidInputTimeValue } from "@testing-library/user-event/dist/utils";
-import { useState } from "react";
-import(supabase from "./supabase";
+import { useEffect, useState } from "react";
+import supabase from "./supabase";
 import "./style.css";
 
 const CATEGORIES = [
@@ -50,7 +50,16 @@ const initialFacts = [
 
 function App() {
   const [showForm, setShowForm] = useState(false);
-  const [facts, setFacts] = useState(initialFacts);
+  const [facts, setFacts] = useState([]);
+
+  //load data from supabase first time page loaded and load in all data
+  useEffect(function () {
+    async function getFacts() {
+      const { data: facts, error } = await supabase.from("facts").select("*");
+      setFacts(facts);
+    }
+    getFacts();
+  }, []);
 
   return (
     <>
