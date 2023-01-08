@@ -1,5 +1,6 @@
 import { isValidInputTimeValue } from "@testing-library/user-event/dist/utils";
 import { useState } from "react";
+import(supabase from "./supabase";
 import "./style.css";
 
 const CATEGORIES = [
