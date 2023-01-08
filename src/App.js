@@ -56,8 +56,12 @@ function App() {
   useEffect(function () {
     async function getFacts() {
       setIsLoading(true);
-      const { data: facts, error } = await supabase.from("facts").select("*");
-      setFacts(facts);
+      const { data: facts, error } = await supabase
+        .from("facts")
+        .select("*")
+        .limit(10);
+      if (!error) setFacts(facts);
+      else alert("Problem getting data oh no please re-load");
       setIsLoading(false);
     }
     getFacts();
