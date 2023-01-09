@@ -111,6 +111,10 @@ h1 {
   background-color: #292524;
 }
 
+.vote-buttons:disabled {
+  background-color: red;
+}
+
 .vote-buttons button {
   border: none;
   background-color: #a8a29e;
