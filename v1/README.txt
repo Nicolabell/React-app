@@ -11,6 +11,8 @@ Useful for aligning one thing to the left in flexbox -  margin-left: auto;
 Correct way to arrange sudo classes for links
 Supabase for simple backend set up
 Use API keys, async function, await fetch to load data 
+Querying data to filter within a function
+Using state within an app
 
 ------
 Accessibility tweaks TO DO:
