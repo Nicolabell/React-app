@@ -85,7 +85,12 @@ function App() {
 
       <main className="main">
         <CategoryFilter setCurrentcategory={setCurrentcategory} />
-        {isLoading ? <Loader /> : <FactList facts={facts} />}
+
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <FactList facts={facts} setFacts={setFacts} />
+        )}
       </main>
     </>
   );
@@ -128,6 +133,7 @@ function NewFactForm({ setFacts, setShowForm }) {
   const [text, setText] = useState("test text");
   const [source, setSource] = useState("http://example.com");
   const [category, setCategory] = useState("");
+  const [isUplaoding, setIsUploading] = useState(false);
   const textLength = text.length;
 
   async function handleSubmit(e) {
@@ -154,14 +160,16 @@ function NewFactForm({ setFacts, setShowForm }) {
 
       //3. upload fact supabase and receive the new fact object
 
+      isUplaoding(true);
       const { data: newFact, error } = await supabase
         .from("facts")
         .insert([{ text, source, category }])
         .select();
+      isUplaoding(false); // renable form fields
 
       // 4. Add new fact to user interface
       //setFacts((facts) => [newfact, ...facts]);   <--- needs to be this eventually but get below working first
-      setFacts((facts) => [newFact[0], ...facts]);
+      if (!error) setFacts((facts) => [newFact[0], ...facts]);
 
       // 5. Reset the input form once fact submitted - not really necessary cos we're closing it below anyway.
       setText("");
@@ -181,6 +189,7 @@ function NewFactForm({ setFacts, setShowForm }) {
         placeholder="Share a fact with the world..."
         value={text}
         onChange={(e) => setText(e.target.value)}
+        disabled={isUplaoding}
       />
       <span>{200 - textLength}</span>
       <input
@@ -188,8 +197,13 @@ function NewFactForm({ setFacts, setShowForm }) {
         type="text"
         placeholder="Trustworthy source..."
         onChange={(e) => setSource(e.target.value)}
+        disabled={isUplaoding}
       />
-      <select value={category} onChange={(e) => setCategory(e.target.value)}>
+      <select
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
+        disabled={isUplaoding}
+      >
         <option value="">Choose category:</option>
         {CATEGORIES.map((cat) => (
           <option key={cat.name} value={cat.name}>
@@ -197,10 +211,13 @@ function NewFactForm({ setFacts, setShowForm }) {
           </option>
         ))}
       </select>
-      <button className="btn btn-large">Post</button>
+      <button className="btn btn-large" disabled={isUplaoding}>
+        Post
+      </button>
     </form>
   );
 }
+//button disable entering more data while the fact is uploading
 
 // Category filters
 
@@ -232,7 +249,7 @@ function CategoryFilter({ setCurrentcategory }) {
   );
 }
 
-function FactList({ facts }) {
+function FactList({ facts, setFacts }) {
   if (facts.length === 0)
     return (
       <p className="message">
@@ -245,7 +262,7 @@ function FactList({ facts }) {
     <section>
       <ul className="facts-list">
         {facts.map((fact) => (
-          <Fact key={fact.id} fact={fact} />
+          <Fact key={fact.id} fact={fact} setFacts={setFacts} />
         ))}
       </ul>
       <p>There are {facts.length} in the database. Add your own!</p>
@@ -253,7 +270,19 @@ function FactList({ facts }) {
   );
 }
 
-function Fact({ fact }) {
+function Fact({ fact, setFacts }) {
+  async function handleVote() {
+    const { data: updatedFact, error } = await supabase
+      .from("facts")
+      .update({ votesInteresting: fact.votesInteresting + 1 })
+      .eq("id", fact.id)
+      .select();
+    if (!error)
+      setFacts((facts) =>
+        facts.map((f) => (f.id === fact.id ? updatedFact[0] : f))
+      );
+  }
+
   return (
     <li className="fact">
       <p>
@@ -272,7 +301,7 @@ function Fact({ fact }) {
         {fact.category}
       </span>
       <div className="vote-buttons">
-        <button>
+        <button onClick={handleVote}>
           👍 <strong>{fact.votesInteresting}</strong>
         </button>
         <button>
