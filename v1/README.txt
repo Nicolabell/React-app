@@ -13,6 +13,7 @@ Supabase for simple backend set up
 Use API keys, async function, await fetch to load data 
 Querying data to filter within a function
 Using state within an app
+disable buttons in relation to state
 
 ------
 Accessibility tweaks TO DO:
