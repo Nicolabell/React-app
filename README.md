@@ -45,9 +45,13 @@ Use npm start build to create static site to upload to server
 
 ---
 
-Extra stuff I learned outside the tutorials:
+# Extra stuff I learned outside the tutorials:
 
 Create a gitignore file at https://www.toptal.com/developers/gitignore
+
+
+
+---
 
 # Getting Started with Create React App
 
