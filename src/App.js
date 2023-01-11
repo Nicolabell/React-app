@@ -131,7 +131,7 @@ function isValidUrl(string) {
 }
 
 function NewFactForm({ setFacts, setShowForm }) {
-  const [text, setText] = useState("t");
+  const [text, setText] = useState("");
   const [source, setSource] = useState("http://example.com");
   const [category, setCategory] = useState("");
   const [isUplaoding, setIsUploading] = useState(false);
