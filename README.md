@@ -28,7 +28,7 @@ disable buttons in relation to state
 
 Use npm start build to create static site to upload to server
 
----
+
 
 # Accessibility tweaks TO DO:
 
@@ -43,7 +43,6 @@ Use npm start build to create static site to upload to server
 -test contrast for suggested link colour palette
 
 
----
 
 # Extra stuff I learned outside the tutorials:
 
