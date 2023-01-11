@@ -22,7 +22,13 @@ body {
   font-weight: 600;
 }
 
-/*layout*/
+.disputed {
+  color: red;
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+/* main layout*/
 
 #root {
   max-width: 80%;
