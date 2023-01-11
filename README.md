@@ -21,7 +21,9 @@ Use npm start build to create static site to upload to server
 Accessibility tweaks TO DO:
 
 -Sort out form labels and add aria described by for input fields
+
 -Work out how to create live region for updated list? or other solution
+
 -Make sure contrast on placeholder text is readable - amend default css for the design
 -Use em or rem for font size
 -test contrast for suggested link colour palette
